@@ -5,27 +5,23 @@
 local DELAY = 2000
 
 -- Create viewer
-local viewer = View.create("viewer2D1")
+local viewer = View.create()
 
 -- Setting up graphical overlay attributes
 local textDecoration = View.TextDecoration.create()
-textDecoration:setPosition(20, 50)
-textDecoration:setSize(40)
-textDecoration:setColor(0, 220, 0)
-
-local decoration = View.ShapeDecoration.create()
-decoration:setLineColor(0, 230, 0) -- Green
+textDecoration:setPosition(20, 50):setSize(40):setColor(0, 220, 0)
 
 --End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
 
--- Viewing image with text label
---@show(img:Image, name:string)
+--- Viewing image with text label
+---@param img Image
+---@param name string
 local function show(img, name)
   viewer:clear()
-  local imid = viewer:addImage(img)
-  viewer:addText(name, textDecoration, nil, imid)
+  viewer:addImage(img)
+  viewer:addText(name, textDecoration)
   viewer:present()
   Script.sleep(DELAY) -- for demonstration purpose only
 end
